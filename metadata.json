@@ -1,0 +1,7 @@
+{
+    "uuid": "notmuch-notifier@cinnamon.org",
+    "name": "Notmuch notifier",
+    "description": "Display unread mail from notmuch",
+    "icon": "mail-unread",
+    "max-instances": "-1"
+}

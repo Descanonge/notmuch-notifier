@@ -1,0 +1,8 @@
+.notmuch-mark-read-button:hover,
+.mailnag-mark-read-button:focus {
+    color: gray;
+}
+
+.notmuch-subject-label {
+    font-style: italic;
+}

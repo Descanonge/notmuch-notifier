@@ -1,0 +1,11 @@
+{
+    "update-interval" : {
+        "type" : "spinbutton",
+        "default" : 30,
+        "min" : 5,
+        "max" : 3600,
+        "units" : "seconds",
+        "step": 1,
+        "description" : "Update interval in seconds."
+    }
+}

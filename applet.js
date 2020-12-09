@@ -65,6 +65,7 @@ NotmuchNotifier.prototype = {
 
             this.settings = new Settings.AppletSettings(this, metadata.uuid, instance_id);
             this.settings.bind("update-interval", "update_interval", this._new_interval);
+            this.settings.bind("max-mail-summary", "max_mail_summary", this.max_mail_summary);
 
             this.menuManager = new PopupMenu.PopupMenuManager(this);
             this.menu = new Applet.AppletPopupMenu(this, orientation);
@@ -185,7 +186,13 @@ NotmuchNotifier.prototype = {
         this.menu.removeAll();
         this.update_label();
         this.get_messages_summary();
+        let count = 1;
         for (var mi of this.mail_items) {
+            if (count > this.max_mail_summary) {
+                this.menu.addAction(_("..."));
+                break;
+            }
+            count ++;
             this.menu.addMenuItem(mi);
         }
         if (this.mail_count == 0) {

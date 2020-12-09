@@ -7,5 +7,13 @@
         "units" : "seconds",
         "step": 1,
         "description" : "Update interval in seconds."
+    },
+    "max-mail-summary" : {
+        "type" : "spinbutton",
+        "default" : 10,
+        "min" : 1,
+        "max" : 100,
+        "step" : 1,
+        "description" : "Max number of mail summary to display."
     }
 }

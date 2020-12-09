@@ -113,7 +113,7 @@ NotmuchNotifier.prototype = {
         if (event.get_button() == 2) {
             this.update_label();
         }
-		return Applet.Applet.prototype._onButtonPressEvent.call(this, actor, event);
+        return Applet.Applet.prototype._onButtonPressEvent.call(this, actor, event);
     },
 
     on_applet_removed_from_panel: function() {
@@ -129,7 +129,7 @@ NotmuchNotifier.prototype = {
 
     get_messages: function() {
         let count = this._run_cmd("notmuch count tag:inbox");
-        let unread = this._run_cmd("notmuch count tag:inbox and tag:unread") > 0;
+        this.mail_unread = (this._run_cmd("notmuch count tag:inbox and tag:unread") > 0);
         this.mail_count = count.replace( /[\r\n]+/gm, "" );
     },
 

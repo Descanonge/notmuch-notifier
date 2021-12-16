@@ -124,6 +124,7 @@ NotmuchNotifier.prototype = {
 
     refresh: function() {
         this._run_cmd("mbsync -aq");
+        this._run_cmd("notmuch new");
         this.update_label();
     },
 

@@ -134,7 +134,7 @@ NotmuchNotifier.prototype = {
     },
 
     get_messages_summary: function() {
-        let mails_s = this._run_cmd("notmuch search --format=json tag:inbox");
+        let mails_s = this._run_cmd(`notmuch search --format=json --limit=${this.max_mail_summary} tag:inbox`);
         if (mails_s != "") {
             try {
                 for (var mail of JSON.parse(mails_s)) {

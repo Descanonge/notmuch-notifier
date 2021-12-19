@@ -155,13 +155,6 @@ NotmuchNotifier.prototype = {
         }
     },
 
-    refresh: function() {
-        run_cmd("notmuch new --no-hooks --quiet");
-        run_cmd("mbsync -aq");
-        run_cmd("notmuch new --quiet");
-        this.update_label();
-    },
-
     get_messages: function() {
         let count = run_cmd("notmuch count tag:inbox");
         this.mail_unread = (run_cmd("notmuch count tag:inbox and tag:unread") > 0);

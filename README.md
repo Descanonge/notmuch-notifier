@@ -1,13 +1,10 @@
 
 ## Notmuch Notifier
 
-> A simple applet to keep notmuch in sync, and print inbox messages.
+> An applet to display unread mails from notmuch
 
-It keeps notmuch in sync by running `mbsync` regularly.
-Update interval can be configured.
-
-Displays number of inbox messages. Icon is greyed out if there are no unread messages in inbox.
-Displays a summary of mails in inbox when clicking on applet.
+Displays number of messages in inbox. Icon is greyed out if there are no unread messages in inbox.
+Displays a summary of mails in inbox when clicking on applet. Mails can be deleted/trashed/archived directly from the summary.
 
 
 # Installation

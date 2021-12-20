@@ -44,8 +44,8 @@ MailItem.prototype = {
 
             this.make_label();
             this.make_buttons();
-            this._hBox.add(this._label);
-            this._hBox.add(this._buttons);
+            this._hBox.add(this._label, {expand: true});
+            this._hBox.add(this._buttons, {align: St.Align.END});
 
             this.addActor(this._hBox, {expand: true});
 
@@ -69,7 +69,7 @@ MailItem.prototype = {
         let icon = new St.Icon({
             icon_name: name,
             icon_type: St.IconType.SYMBOLIC,
-            icon_size: 24,
+            icon_size: 20,
             style: "popup-menu-icon"
         })
         return icon;

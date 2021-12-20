@@ -49,9 +49,19 @@ MailItem.prototype = {
 
             this.addActor(this._hBox, {expand: true});
 
+            this.connect('activate', Lang.bind(this, function(){
+                let cmd = `emacsclient --eval '(progn (raise-frame (selected-frame)) (=notmuch) (notmuch-search "tag:inbox" nil "${this.id}"))'`;
+                global.logError(cmd);
+                run_cmd(cmd);
+            }));
+
         } catch (e) {
             global.logError(e);
         }
+    },
+
+    activate: function(event, keepMenu) {
+        this.emit('activate', event, false);
     },
 
     make_label: function() {
@@ -114,7 +124,7 @@ NotmuchNotifier.prototype = {
             this.settings.bind("max-mail-summary", "max_mail_summary", this.max_mail_summary);
 
             this.menuManager = new PopupMenu.PopupMenuManager(this);
-            this.menu = new Applet.AppletPopupMenu(this, orientation, {sensitive: false});
+            this.menu = new Applet.AppletPopupMenu(this, orientation, {sensitive: true});
             this.menuManager.addMenu(this.menu);
 
             this.mail_count = 0;
@@ -222,6 +232,7 @@ NotmuchNotifier.prototype = {
             this.bind_remove(mi._btn_archive, mi, '-inbox')
             this.bind_remove(mi._btn_trash, mi, '+trashed')
             this.bind_remove(mi._btn_delete, mi, '+deleted')
+            mi.connect('activate', Lang.bind(this, function(){this.menu.close();}));
 
         }
         if (this.mail_count == 0) {
